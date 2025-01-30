@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PurchaseViewModel>
+
+<div class="container mt-5">
+    <h2>Purchases</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Subscription Name</th>
+            <th>Remaining Attempts</th>
+            <th>Usage Limit</th>
+            <th>Price</th>
+            <th>Created At</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var purchase in Model)
+        {
+            <tr>
+                <td>@purchase.SubscriptionName</td>
+                <td style="color: @(purchase.RemainingAttempts != 0 ? "green" : "black"); font-weight: bold;">@purchase.RemainingAttempts</td>
+                <td>@purchase.UsageLimit</td>
+                <td>@($"{purchase.Price:C}")</td>
+                <td>@purchase.CreatedAt</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

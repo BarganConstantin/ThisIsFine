@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SubscriptionViewModel>
+
+<div class="container mt-5">
+    <h2>Plans</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Usage Limit</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var subscription in Model)
+        {
+            <tr>
+                <td>@subscription.Name</td>
+                <td>$@subscription.Price</td>
+                <td>@subscription.UsageLimit</td>
+                <td>@subscription.Description</td>
+                <td>
+                    <form asp-controller="Purchases" asp-action="Buy" method="post">
+                        <input type="hidden" name="subscriptionId" value="@subscription.Id" />
+                        <button type="submit" class="btn btn-primary">Buy</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<UsageViewModel>
+
+<div class="container mt-5">
+    <h2>Usages</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>PurchaseId</th>
+            <th>SubscriptionName</th>
+            <th>ImageUrl</th>
+            <th>CreatedAt</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var usage in Model)
+        {
+        <tr>
+            <td>@usage.PurchaseId</td>
+            <td>@usage.SubscriptionName</td>
+            <td>@usage.ImageUrl</td>
+            <td>@usage.CreatedAt</td>
+            <td><a href="@usage.ImageUrl" target="_blank">View Image</a></td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Image Uploaded";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h2 class="mb-4">Your Image Link</h2>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="imageLink" value="@ViewBag.ImageUrl" readonly>
+                <button class="btn btn-primary" onclick="copyLink()">Copy Link</button>
+            </div>
+            <a href="@ViewBag.ImageUrl" target="_blank" class="btn btn-success">View Image</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyLink() {
+        var copyText = document.getElementById("imageLink");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+        document.execCommand("copy");
+        alert("Copied the link: " + copyText.value);
+    }
+</script>
